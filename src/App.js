@@ -10,8 +10,8 @@ class App extends React.Component {
     selectedVideo: null,
   };
 
-  componentDidMount(){
-    this.handleSubmit('React Redux')
+  componentDidMount() {
+    this.handleSubmit("React Redux");
   }
 
   handleSubmit = async (searchTerm) => {
@@ -31,15 +31,15 @@ class App extends React.Component {
   };
 
   onVideoSelect = (video) => {
-    this.setState({ selectedVideo: video })
-  }
+    this.setState({ selectedVideo: video });
+  };
 
   render() {
     const { selectedVideo, videos } = this.state;
     return (
-      <Grid container justify="center" style={{ padding: '20px'}} spacing={10}>
+      <Grid container justify="center" spacing={10}>
         <Grid item xs={12}>
-          <Grid container spacing={10}>
+          <Grid container spacing={8}>
             <Grid item xs={12}>
               <SearchBar onFormSubmit={this.handleSubmit} />
             </Grid>
