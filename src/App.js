@@ -9,6 +9,11 @@ class App extends React.Component {
     videos: [],
     selectedVideo: null,
   };
+
+  componentDidMount(){
+    this.handleSubmit('React Redux')
+  }
+
   handleSubmit = async (searchTerm) => {
     const response = await youtube.get("search", {
       params: {
@@ -25,10 +30,14 @@ class App extends React.Component {
     });
   };
 
+  onVideoSelect = (video) => {
+    this.setState({ selectedVideo: video })
+  }
+
   render() {
     const { selectedVideo, videos } = this.state;
     return (
-      <Grid container justify="center" spacing={10}>
+      <Grid container justify="center" style={{ padding: '20px'}} spacing={10}>
         <Grid item xs={12}>
           <Grid container spacing={10}>
             <Grid item xs={12}>
@@ -38,7 +47,7 @@ class App extends React.Component {
               <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={4}>
-              <VideoList videos={videos} />
+              <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
             </Grid>
           </Grid>
         </Grid>
